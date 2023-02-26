@@ -13,7 +13,7 @@ export const useLogin = () => {
     setIsPending(true)
   
     try {
-      // login
+      // login TODO:Other kind of authentication
       const res = await projectAuth.signInWithEmailAndPassword(email, password)
 
       // dispatch login action

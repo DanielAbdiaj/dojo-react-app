@@ -13,7 +13,7 @@ export const useSignup = () => {
     setIsPending(true)
   
     try {
-      // signup
+      // signup TODO:Other kind of authentication
       const res = await projectAuth.createUserWithEmailAndPassword(email, password)
 
       if (!res) {
