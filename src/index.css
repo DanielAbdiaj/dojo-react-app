@@ -38,6 +38,7 @@ ul {
   cursor: pointer;
   font-size: 1em;
   border: 1px solid var(--primary-color);
+  font-weight: bold;
 }
 .btn:hover {
   color: #fff;
