@@ -45,6 +45,20 @@ ul {
   background-color: var(--primary-color);
 }
 
+.delete-btn {
+  background: #fff;
+  border-radius: 4px;
+  color: var(--primary-color);
+  cursor: pointer;
+  font-size: 0.9em;
+  border: 1px solid var(--primary-color);
+  font-weight: bold;
+}
+.delete-btn:hover {
+  color: #fff;
+  background-color: var(--primary-color);
+}
+
 /* forms */
 label {
   display: block;

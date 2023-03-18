@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Avatar from "../../components/Avatar"
 import { timestamp } from "../../firebase/config"
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useFirestore } from "../../hooks/useFirestore"
@@ -27,9 +28,31 @@ export default function ProjectComments({ project }) {
     }
   }
 
+  //TODO: Delete a comment!!!
+
   return (
     <div className="project-comments">
       <h4>Project Comments</h4>
+
+    
+      <ul>
+        {project.comments.length > 0 && project.comments.map(comment => (
+          <li key={comment.id}>
+            
+            <div className="comment-author">
+                <div className="comment-details">
+                    <Avatar src={comment.photoURL} />
+                    <p>{comment.displayName}</p>
+                    <p className="comment-date">(date here)</p>
+                </div>
+              <button className="delete-btn">x</button>
+            </div>
+            <div className="comment-content">
+              <p>{comment.content}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
 
       <form className="add-comment" onSubmit={handleSubmit}>
         <label>
