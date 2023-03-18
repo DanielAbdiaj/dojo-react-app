@@ -1,3 +1,7 @@
 .create-form {
     max-width: 800px;
   }
+
+  textarea {
+    font-size: 1.4em;
+  }

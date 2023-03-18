@@ -8,6 +8,7 @@ export default function ProjectComments({ project }) {
   const { user } = useAuthContext()
   const { updateDocument, response } = useFirestore('projects')
   const [newComment, setNewComment] = useState('')
+  //const [myComment ,setMyComment] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,22 +31,51 @@ export default function ProjectComments({ project }) {
 
   //TODO: Delete a comment!!!
 
+  function deleteObjectById(id, objectArray) {
+    // Find the index of the object with the matching id
+    const index = objectArray.findIndex(obj => obj.id === id);
+  
+    // If the index is -1, the object was not found
+    if (index === -1) {
+      console.log(`Object with id ${id} not found.`);
+      return objectArray;
+    }
+  
+    // Remove the object from the array using splice
+    objectArray.splice(index, 1);
+  
+    // Return the updated array
+    return objectArray;
+  }
+
+  const deleteComment = async(id)=>{
+
+    await updateDocument(project.id, {
+        comments: deleteObjectById(id,project.comments),
+      })
+  }
+
+  const myComment=(commentDisplayName)=>{
+    if(commentDisplayName==user.displayName)
+            return true;
+    else
+            return false;
+
+  }
+
   return (
     <div className="project-comments">
       <h4>Project Comments</h4>
-
-    
       <ul>
         {project.comments.length > 0 && project.comments.map(comment => (
           <li key={comment.id}>
-            
             <div className="comment-author">
                 <div className="comment-details">
                     <Avatar src={comment.photoURL} />
                     <p>{comment.displayName}</p>
                     <p className="comment-date">(date here)</p>
                 </div>
-              <button className="delete-btn">x</button>
+              {myComment(comment.displayName) && <button className="delete-btn" onClick={()=>deleteComment(comment.id)}>x</button>}
             </div>
             <div className="comment-content">
               <p>{comment.content}</p>
