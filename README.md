@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## This React App it's hosted in this 2 domains
+### https://the-dojo-site-8c8fa.web.app/
+### https://the-dojo-site-8c8fa.firebaseapp.com/
+
 ## Available Scripts
 
 In the project directory, you can run:
